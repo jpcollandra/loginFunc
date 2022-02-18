@@ -1,27 +1,41 @@
 import React, { useState } from "react";
-import { View, Image, StyleSheet, Dimensions } from "react-native";
-import { TextInput } from "react-native";
+import { View, Image, StyleSheet, Dimensions, Linking,TextInput, Alert } from "react-native";
 import { Button, Text } from "react-native-elements";
+import User from "../dtos/user";
 
 export default function LoginPage() {
-  /*const [username,setUsername] = useState("");
+  const [username,setUsername] = useState("");
   const [password,setPassword] = useState("");
 
+  const tempUser:User={
+    username: "borats",
+    password: "wordpass"
+    
+  }
 
   const loginPayload = {
     username: username,
     password: password,
   };
 
-  const response = await fetch(""),{ 
-    method: "POST",
-    body: JSON.stringify(loginPayload),
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    },
+  // const response = await fetch(""),{ 
+  //   method: "POST",
+  //   body: JSON.stringify(loginPayload),
+  //   headers: {
+  //     Accept: "application/json",
+  //     "Content-Type": "application/json"
+  //   },
 
-   } */
+  //  } 
+
+  function userLogin(){
+    if(tempUser.username === username && tempUser.password===password){
+      Alert.alert("Welcome Associate!");
+    } else
+      Alert.alert("Interloper identified!");
+
+
+  }
 
   return (
     <View>
@@ -32,10 +46,15 @@ export default function LoginPage() {
         />
       </View>
       <View style={styles.container2}>
-        <TextInput style={styles.inputstyle} placeholder="Enter Username" />
-        <TextInput style={styles.inputstyle} placeholder="Enter Password" />
+        <TextInput style={styles.inputstyle} onChangeText={setUsername} placeholder="Enter Username" />
+        <TextInput style={styles.inputstyle} onChangeText={setPassword} secureTextEntry={true} placeholder="Enter Password" />
 
-        <Text style={styles.textstyle}>Forgot Password?</Text>
+        <Text style={styles.textstyle}>
+        <Text style={styles.link} onPress={() => {Linking.openURL('https://www.google.com')}}>
+          Forgot Password?
+        </Text>
+        
+        </Text>
 
         <Button
           title="Login"
@@ -51,13 +70,20 @@ export default function LoginPage() {
             marginVertical: 10,
           }}
           titleStyle={{ fontSize: 12 }}
+          onPress={userLogin}
         />
 
-        <Text style={styles.textstyle2}>Not a user yet? Register Now</Text>
+        <Text style={styles.textstyle2}>Not a user yet?
+        <Text style={styles.link} onPress={() => {Linking.openURL('https://www.google.com')}}>
+         Register Now!
+        </Text>
+        </Text>
       </View>
     </View>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -96,4 +122,8 @@ const styles = StyleSheet.create({
     marginTop: "20%",
     alignSelf: "center",
   },
+  link:{
+    color: "#fd7e14"
+
+  }
 });
