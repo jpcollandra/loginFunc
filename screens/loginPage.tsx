@@ -46,8 +46,8 @@ export default function LoginPage() {
         />
       </View>
       <View style={styles.container2}>
-        <TextInput style={styles.inputstyle} onChangeText={setUsername} placeholder="Enter Username" />
-        <TextInput style={styles.inputstyle} onChangeText={setPassword} secureTextEntry={true} placeholder="Enter Password" />
+        <TextInput style={styles.inputstyle} autoCapitalize={"none"} onChangeText={setUsername} placeholder="Enter Username" />
+        <TextInput style={styles.inputstyle} autoCapitalize={"none"} onChangeText={setPassword} secureTextEntry={true} placeholder="Enter Password" />
 
         <Text style={styles.textstyle}>
         <Text style={styles.link} onPress={() => {Linking.openURL('https://www.google.com')}}>
