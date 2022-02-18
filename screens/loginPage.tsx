@@ -73,9 +73,9 @@ export default function LoginPage() {
           onPress={userLogin}
         />
 
-        <Text style={styles.textstyle2}>Not a user yet?
+        <Text style={styles.textstyle2}>Not a user yet?{" "}
         <Text style={styles.link} onPress={() => {Linking.openURL('https://www.google.com')}}>
-         Register Now!
+        Register Now!
         </Text>
         </Text>
       </View>
